@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CalculatorIMC.ResultadoIMC"
+             Title="ResultadoIMC"
+             Loaded="ContentPage_Loaded">
+    
+    <ContentPage.Resources>
+        <Color x:Key="colorBar">#21618C</Color>
+        <Color x:Key="primary">#3498DB</Color>
+        <Color x:Key="secondary">#85C1E9</Color>
+        <Color x:Key="tertiary">#FFFFFF</Color>
+        <Color x:Key="cuartiary">#5DA8DA</Color>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource primary}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0"
+              Margin="0,0,0,20">
+            
+            <Label Text="Tu Resultado"
+                   FontSize="30"
+                   TextColor="{StaticResource tertiary}"
+                   FontAttributes="Bold"
+                   VerticalOptions="End"
+                   HorizontalOptions="Center"/>
+        </Grid>
+
+        <Grid Grid.Row="1"
+              Margin="30,20,30,20">
+            
+            <Frame BackgroundColor="{StaticResource secondary}"
+                   BorderColor="Transparent"
+                   CornerRadius="10">
+                
+                <VerticalStackLayout VerticalOptions="Center" 
+                                     HorizontalOptions="Center">
+
+                    <Label x:Name="lblNivel" 
+                           Text="NORMAL"
+                           TextColor="Red"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label x:Name="lblResultado" 
+                           Text="0.0"
+                           TextColor="{StaticResource tertiary}"
+                           FontSize="90"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label x:Name="lblTxtRango" 
+                           Text="Rango normal de IMC"
+                           TextColor="{StaticResource tertiary}"
+                           Opacity="0.7"
+                           FontSize="20"
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label x:Name="lblValorRango" 
+                           Text="0 - 0 kg/m2"
+                           TextColor="{StaticResource tertiary}"
+                           FontSize="20"                         
+                           HorizontalTextAlignment="Center"/>
+                    
+                    <Label x:Name="lblMensaje" 
+                           Text="Tienes un peso corporal normal. ¡Buen trabajo!"
+                           TextColor="{StaticResource tertiary}"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           Margin="0,20,0,0"/>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!--Boton Calcular-->
+        <Grid Grid.Row="2">
+            
+            <Button x:Name="btnRegresar" 
+                    Text="Regresar"
+                    BackgroundColor="{StaticResource tertiary}"
+                    TextColor="{StaticResource primary}"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="0"
+                    Pressed="btnRegresar_Pressed"/>
+        </Grid>
+        
+    </Grid>
+    
+</ContentPage>

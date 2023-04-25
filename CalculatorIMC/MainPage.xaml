@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sf="clr-namespace:Syncfusion.Maui.Sliders;assembly=Syncfusion.Maui.Sliders"
+             x:Class="CalculatorIMC.MainPage"
+             Title="MainPage">
+
+    <ContentPage.Resources>
+        <Color x:Key="colorBar">#70B6E5</Color>
+        <Color x:Key="primary">#3498DB</Color>
+        <Color x:Key="secondary">#85C1E9</Color>
+        <Color x:Key="tertiary">#FFFFFF</Color>
+        <Color x:Key="cuartiary">#5DA8DA</Color>
+    </ContentPage.Resources>
+
+    <Grid BackgroundColor="{StaticResource Primary}" 
+          RowSpacing="15" Padding="0,20,0,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <!--Botones genero-->
+        <Grid Grid.Row="0" 
+              Margin="20,0,20,0"
+              ColumnSpacing="10">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame x:Name="frameMen" 
+                   Grid.Column="0" 
+                   BackgroundColor="{StaticResource secondary}"
+                   BorderColor="Transparent"
+                   CornerRadius="10">
+
+                <ImageButton x:Name="btnMen"
+                             Source="men_white.svg"
+                             HeightRequest="100"
+                             WidthRequest="100"
+                             BackgroundColor="Transparent"
+                             Margin="0"
+                             Pressed="btnMen_Pressed"/>
+            </Frame>
+
+            <Frame x:Name="frameWomen" 
+                   Grid.Column="1"
+                   BackgroundColor="{StaticResource secondary}"                   
+                   BorderColor="Transparent" 
+                   CornerRadius="10">
+
+                <ImageButton x:Name="btnWomen"
+                             HeightRequest="100"
+                             WidthRequest="100"
+                             Source="women_white.svg"
+                             BackgroundColor="Transparent"
+                             Margin="0"
+                             Pressed="btnWomen_Pressed"/>
+            </Frame>
+            
+        </Grid>
+        
+        <!--Altura-->
+        <Grid Grid.Row="1" 
+              Margin="20,0,20,0">
+            
+            <Frame BackgroundColor="{StaticResource secondary}"
+                   BorderColor="Transparent"
+                   CornerRadius="10"
+                   Padding="0"
+                   Margin="0">
+
+                <VerticalStackLayout VerticalOptions="CenterAndExpand">
+                    
+                    <Label Text="Altura"
+                           Opacity="0.7"
+                           HorizontalOptions="Center"
+                           FontSize="20"
+                           TextColor="{StaticResource tertiary}"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" 
+                                           Spacing="5">
+                        <Label x:Name="lblAltura" 
+                               Text="{Binding Source={x:Reference sldAltura}, 
+                               Path=Value,
+                               StringFormat='{0:F2}'}"  
+                               FontSize="40"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource tertiary}"/>
+
+                        <Label Text="m" 
+                               FontSize="20"
+                               Opacity="0.7"
+                               Margin="0,0,0,10"
+                               VerticalOptions="End"
+                               TextColor="{StaticResource tertiary}"/>
+                    </HorizontalStackLayout>
+
+                    <sf:SfSlider x:Name="sldAltura" 
+                                 Minimum="0"
+                                 Maximum="2.9"
+                                 Interval="0.1"
+                                 Value="0">
+
+                        <sf:SfSlider.ThumbStyle>
+                            <sf:SliderThumbStyle Fill="{StaticResource tertiary}" />
+                        </sf:SfSlider.ThumbStyle>
+
+                        <sf:SfSlider.TrackStyle>
+                            <sf:SliderTrackStyle ActiveFill="{StaticResource tertiary}"
+                                                 InactiveFill="{StaticResource  colorBar}" />
+                        </sf:SfSlider.TrackStyle>
+                    </sf:SfSlider>
+                    
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <Grid Grid.Row="2" 
+              Margin="20,0,20,0">
+
+            <Frame BackgroundColor="{StaticResource secondary}"
+                   BorderColor="Transparent"
+                   CornerRadius="10"
+                   Margin="0"
+                   Padding="0">
+
+                <VerticalStackLayout VerticalOptions="CenterAndExpand">
+                    <Label Text="Peso"
+                           Opacity="0.7"
+                           HorizontalOptions="Center"
+                           FontSize="20"
+                           TextColor="{StaticResource tertiary}"/>
+
+                    <HorizontalStackLayout HorizontalOptions="Center" 
+                                           Spacing="5">
+
+                        <Label x:Name="lblPeso" 
+                               Text="{Binding Source={x:Reference sldPeso}, 
+                               Path=Value,
+                               StringFormat='{0:F0}'}"  
+                               FontSize="40"
+                               FontAttributes="Bold"
+                               TextColor="{StaticResource tertiary}"/>
+
+                        <Label Text="kg" 
+                               FontSize="20"
+                               Opacity="0.7"
+                               Margin="0,0,0,10"
+                               VerticalOptions="End"
+                               TextColor="{StaticResource tertiary}"/>
+                    </HorizontalStackLayout>
+
+                    <sf:SfSlider x:Name="sldPeso" 
+                                 Minimum="0"
+                                 Maximum="300"
+                                 Interval="1"
+                                 Value="0">
+
+                        <sf:SfSlider.ThumbStyle>
+                            <sf:SliderThumbStyle Fill="{StaticResource tertiary}" />
+                        </sf:SfSlider.ThumbStyle>
+
+                        <sf:SfSlider.TrackStyle>
+                            <sf:SliderTrackStyle ActiveFill="{StaticResource tertiary}"
+                                                 InactiveFill="{StaticResource colorBar}" />
+                        </sf:SfSlider.TrackStyle>
+                    </sf:SfSlider>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+
+        <!--Boton Calcular-->
+        <Grid Grid.Row="3">
+            <Button x:Name="btnCalcular" 
+                    Text="Calcular"
+                    BackgroundColor="{StaticResource tertiary}"
+                    TextColor="{StaticResource primary}"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    CornerRadius="0"
+                    Pressed="btnCalcular_Pressed"/>
+        </Grid>
+    </Grid>
+</ContentPage>
